@@ -1,0 +1,57 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <main>
+        <% for (let prods of product) { %>
+        <form class="product-form" action="/edit-product" method="POST" enctype="application/json">
+            <div class="form-control">
+                <label for="title">Title</label>
+                <input 
+                    type="text" 
+                    name="title" 
+                    id="title" 
+                    value="<% if (editing) { %><%= prods.title %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="imageUrl">Image URL</label>
+                <input 
+                    type="text" 
+                    name="imageUrl" 
+                    id="imageUrl" 
+                    value="<% if (editing || hasError) { %><%= prods.imageUrl %><% } %>">    
+            </div> 
+            <!-- <div class="form-control">
+                <label for="image">Image URL</label>
+                <input 
+                    type="file" 
+                    name="image" 
+                    id="image" >
+            </div> -->
+            <div class="form-control">
+                <label for="price">Price</label>
+                <input 
+                    type="number" 
+                    name="price" 
+                    id="price" 
+                    step="5" 
+                    value="<% if (editing || hasError) { %><%= prods.price %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="description">Description</label>
+                <textarea 
+                    name="description" 
+                    id="description" 
+                    rows="5"><% if (editing || hasError) { %><%= prods.description %><% } %></textarea>
+            </div>
+            <% if (editing) { %>
+                <input type="hidden" value="<%= prods.product_id %>" name="productId">
+            <% } %>
+
+            <button class="btn" type="submit">Update Product</button>
+        </form>
+        <% } %>
+    </main>
+<%- include('../includes/end.ejs') %>
