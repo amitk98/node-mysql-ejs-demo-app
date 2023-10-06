@@ -5,7 +5,7 @@ export class adminMenuController {
     static async addItem (req, res, next) {
         try {
             const obj = JSON.parse(JSON.stringify(req.body));
-            let response= await MenuService.itemAddition(obj, req.headers);
+            let response= await MenuService.itemAddition(obj, req.file);
             if(response) {
                 res.redirect("/adminproductlist");
             } else {

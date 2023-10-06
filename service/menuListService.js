@@ -15,13 +15,13 @@ export class MenuService {
         return item;
     }
 
-    static async itemAddition(data, headers) {
+    static async itemAddition(data, file) {
         let itemdata = {
             title : data.title,
             description : data.description,
             ispublished : 1,
             price : data.price,
-            imageUrl : data.imageUrl,
+            imageUrl : file.filename,
             submission_date : moment().format('YYYY-MM-DD'),
         }
 

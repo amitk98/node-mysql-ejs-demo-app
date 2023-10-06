@@ -5,7 +5,7 @@
 
 <body>
     <main>
-        <form class="product-form" action="/addproduct" method="POST" enctype="application/json">
+        <form class="product-form" action="/addproduct" method="POST" enctype="multipart/form-data">
             <div class="form-control">
                 <label for="title">Title</label>
                 <input 
@@ -15,11 +15,11 @@
                     value="<% if (editing) { %><%= prods.title %><% } %>">
             </div>
             <div class="form-control">
-                <label for="imageUrl">Image URL</label>
+                <label for="imageUrl">Product Image</label>
                 <input 
                     type="file" 
-                    name="imageUrl" 
-                    id="imageUrl" 
+                    name="image" 
+                    id="image"
                     value="<% if (editing || hasError) { %><%= prods.imageUrl %><% } %>">
             </div> 
             <!-- <div class="form-control">
